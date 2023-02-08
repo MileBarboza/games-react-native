@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useFonts } from "expo-font";
-import ShopNavigator from './src/Navigation/ShopNavigator'
+import { NavigationContainer } from "@react-navigation/native";
+import BottomTabNavigator from "./src/Navigation/BottomTabNavigator";
 
 
 export default function App() {
@@ -11,5 +12,9 @@ export default function App() {
     return null;
   }
 
-  return <ShopNavigator/>
+  return (
+    <NavigationContainer>
+      <BottomTabNavigator/>
+    </NavigationContainer>
+  )
 }

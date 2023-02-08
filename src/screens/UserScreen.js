@@ -1,24 +1,21 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { BtnDetail } from '../components/Buttons'
 
-const ProductsScreen = ({navigation}) => {
+const UserScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Products</Text>
+      <Text>User</Text>
       <Text>👾</Text>
-      <BtnDetail  txt="DETAILS" onPress={() => navigation.navigate("Details")}/>
     </View>
   )
 }
 
-export default ProductsScreen
+export default UserScreen
 
 const styles = StyleSheet.create({
   container:{
     flex:1,
     justifyContent:"center",
-    alignItems:"center"
-  }
+    alignItems:"center",
+  },
 })
-
