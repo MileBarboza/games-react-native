@@ -1,8 +1,10 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React, { useEffect } from 'react'
 import { BtnAdd } from '../components/Buttons'
+import { useSelector } from 'react-redux'
 
 const DetailsScreen = ({navigation, route}) => {
+    const bread = useSelector(state => state.products.selected)
 
   useEffect(() => {
     console.log(route.params)
@@ -10,12 +12,14 @@ const DetailsScreen = ({navigation, route}) => {
 
   return (
      <View style={styles.container}>     
-         <Image source= {{uri: route.params.img}} style={styles.image} />
+         <Image source= {{uri: bread.img}} style={styles.image} />
        <View style={styles.containerDetail}>
-           <Text style={styles.title}>{route.params.name}</Text>
-           <Text style={styles.descrip}>{route.params.description}</Text>
-           <Text style={styles.price}>${route.params.price}</Text>
-             <BtnAdd txt="ADD" onPress={() => navigation.navigate("Cart") }/>
+           <Text style={styles.title}>{bread.name}</Text>
+           <Text style={styles.descrip}>{bread.description}</Text>
+           <Text style={styles.price}>${bread.price}</Text>
+             <View style={styles.btn}>
+              <BtnAdd txt="ADD" onPress={() =>console.log("Agregar al Carrito") }/>
+             </View>
        </View>
      </View>
   )
@@ -30,8 +34,6 @@ const styles = StyleSheet.create({
   },
   containerDetail:{
     flex:1,
-    justifyContent:"center",
-    alignItems:"center",
     width:"100%",
     height:"35%",
     position:"absolute",
@@ -49,13 +51,20 @@ const styles = StyleSheet.create({
     fontSize:30,
     fontWeight:"bold",
     paddingTop: 20,
+    paddingBottom:8,
+    paddingLeft:20
   },
   descrip:{
+    textAlign:"center",
     marginHorizontal:20
   },
   price:{
+    textAlign:"center",
     fontSize:30,
     fontWeight:"bold"
   },
+  btn: {
+    alignItems:"center",
+  }
 })
 

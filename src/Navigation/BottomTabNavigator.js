@@ -15,8 +15,8 @@ export default BottomTabNavigator = () => {
    screenOptions={  ({route})  => ({
       headerShown:false,
       tabBarStyle: styles.tabBar,
-      tabBarIcon: ({focused}) => {
-
+      tabBarActiveTintColor: '#d33e4a',
+      tabBarIcon: ({focused, color}) => {
          let iconName =''
          switch (route.name){
             case 'ShopTab':
@@ -32,37 +32,33 @@ export default BottomTabNavigator = () => {
                iconName = focused ? 'heart' : 'heart-outline';
                break
          }
-         return <Ionicons name = {iconName}  size= {24}  color="black" />
+         return <Ionicons name = {iconName}  size= {24}  color={color} />
       }
    })}
   >
 
      <BottomTab.Screen name="ShopTab" component={ShopNavigator} size= {30}
         options={{
-           tabBarLabel:() =>(
-              <Text>Home</Text>
-           ),
+         tabBarLabel: 'Home',
+         tabBarLabelStyle: styles.txt,
         }}
      />
      <BottomTab.Screen name="FavTab" component={FavoriteNavigator}
          options={{
-            tabBarLabel:() =>(
-             <Text>Favorite</Text>
-            ),
+         tabBarLabel: 'Favorite',
+         tabBarLabelStyle: styles.txt,
          }}
      /> 
       <BottomTab.Screen name="CartTab" component={CartNavigator}
          options={{
-            tabBarLabel:() =>(
-             <Text>Cart</Text>
-            ),
+         tabBarLabel: 'Cart',
+         tabBarLabelStyle: styles.txt,
          }}
      /> 
      <BottomTab.Screen name="UserTab" component={UserNavigator} size= {30}
          options={{
-            tabBarLabel:() =>(
-               <Text>User</Text>
-            ),
+         tabBarLabel: 'User',
+         tabBarLabelStyle: styles.txt,
          }}
      />
      
@@ -78,5 +74,10 @@ const styles = StyleSheet.create({
       height:55,
       paddingTop:5,
       paddingBottom: 5,
+
+      backgroundColor:"#222"
+  },
+  txt:{
+   fontSize:15
   },
 })

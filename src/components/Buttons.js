@@ -39,12 +39,6 @@ const styles = StyleSheet.create({
     color: "#f1f1f1",
     fontWeight:"bold"
   },
-  bntIcon:{
-    flexDirection:"row",
-    justifyContent:"space-evenly",
-    alignItems:"center",
-    color:"black"
-  }
 })
 
 

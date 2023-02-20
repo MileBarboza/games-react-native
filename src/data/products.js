@@ -24,7 +24,7 @@ export const PRODUCTS = [
     price: "4790",
   },
   {
-    id: "bd7a",
+    id: "i62a",
     category: "4",
     name: "The Las of US",
     img: "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest?cb=20211209015400&path-prefix=es",
@@ -40,7 +40,7 @@ export const PRODUCTS = [
     price: "2460",
   },
   {
-    id: "bd7a",
+    id: "i62a",
     category: "1",
     name: "The Las of US",
     img: "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest?cb=20211209015400&path-prefix=es",
@@ -56,7 +56,7 @@ export const PRODUCTS = [
     price: "4790",
   },
   {
-    id: "bd7a",
+    id: "i62a",
     category: "1",
     name: "The Las of US",
     img: "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest?cb=20211209015400&path-prefix=es",
@@ -72,7 +72,7 @@ export const PRODUCTS = [
     price: "2460",
   },
   {
-    id: "bd7a",
+    id: "i62a",
     category: "5",
     name: "The Las of US",
     img: "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest?cb=20211209015400&path-prefix=es",
