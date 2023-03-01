@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import UserScreen from "../screens/UserScreen"
+import OrdersScreen from "../screens/OrdersScreen"
+import { BtnBack } from "../components/Buttons";
 
 const Stack = createNativeStackNavigator()
 
-export default UserNavigator = () => {
+export default UserNavigator = ({navigation}) => {
   return (
-    <Stack.Navigator  initialRouteName="User" 
+    <Stack.Navigator
+      initialRouteName="User" 
       screenOptions={{
         headerTitleAlign:"center",
         headerShadowVisible: false,
@@ -14,8 +16,13 @@ export default UserNavigator = () => {
         },
       }}
     >
-        <Stack.Screen name="User" component={UserScreen}
-          options={{ title: "User" }}/>
+
+      <Stack.Screen name="Orders" component={OrdersScreen}
+        options={{ title: "User",
+        headerLeft: () => (
+          <BtnBack onPress={() => navigation.goBack()} />
+          )
+       }}/>
 
     </Stack.Navigator>
   )

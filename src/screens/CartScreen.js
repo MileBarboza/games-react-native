@@ -1,18 +1,23 @@
 import React from "react"
 import { StyleSheet, Text, View, FlatList } from "react-native"
-import { CART } from "../data/cart"
 import CartItem from "../components/CartItem"
 import { BtnCheckout, BtnEmpty } from "../components/Buttons"
+import { useSelector, useDispatch } from "react-redux"
+import { confirmCart, removeItem, clearCart } from "../store/actions/cart.action"
 
 const CartScreen = () => {
-  const total =3949
+  const dispatch = useDispatch()
+  const items = useSelector(state => state.cart.items)
+  const total = useSelector(state => state.cart.total)
 
   const handleConfirmCart = () => {
-    console.log("Confirmar Carrito")
+    dispatch(confirmCart(items, total))
   }
-
-  const handleDeleteItem = () => {
-    console.log("borrar elemento")
+  const handleDeleteItem = id => {
+    dispatch(removeItem(id))
+  }
+  const handleClearCart = () => {   
+    dispatch(clearCart(items))
   }
 
   const renderCartItem = ({ item }) => (
@@ -24,15 +29,15 @@ const CartScreen = () => {
 
       <View style={styles.list}>
         <FlatList
-          data={CART}
+          data={items}
           keyExtractor={item => item.id}
           renderItem={renderCartItem}
         />
       </View>
 
-      <Text style={styles.total}>Total: ${total}</Text>
+      <Text style={styles.total}>Total: <Text style={styles.price}>$ {total}</Text></Text>
         <View style={styles.btnContainer}>
-          <BtnEmpty  txt="EMPTY CART" onPress={() => console.log("Empty") }/>
+          <BtnEmpty  txt="EMPTY CART" onPress={handleClearCart}/>
           <BtnCheckout txt="CHECKOUT"  onPress={handleConfirmCart}/>
         </View>
     </View>
@@ -55,14 +60,6 @@ const styles = StyleSheet.create({
     borderTopColor: "#ccc",
     borderTopWidth: 1,
   },
-  confirm: {
-    backgroundColor: "#ccc",
-    borderRadius: 10,
-    padding: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
   total: {
     textAlign:"right",
     fontSize: 21,
@@ -70,6 +67,9 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
+  },
+  price:{
+    fontWeight:"bold"
   },
   text: {
     fontSize: 18,

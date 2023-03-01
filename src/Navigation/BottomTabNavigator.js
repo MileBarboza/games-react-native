@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ShopNavigator from './ShopNavigator';
@@ -61,7 +61,6 @@ export default BottomTabNavigator = () => {
          tabBarLabelStyle: styles.txt,
          }}
      />
-     
    </BottomTab.Navigator>
   )
 }
@@ -74,8 +73,8 @@ const styles = StyleSheet.create({
       height:55,
       paddingTop:5,
       paddingBottom: 5,
-
-      backgroundColor:"#222"
+      backgroundColor:"#222",
+      borderTopColor: "transparent",
   },
   txt:{
    fontSize:15

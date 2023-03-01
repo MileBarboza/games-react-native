@@ -9,12 +9,12 @@ const CartItem = ({ item, onDelete }) => {
          <Image source= {{uri: item.img}} style={styles.image}/>
       </View>
       <View style={styles.detail}>
-         <View style={styles.detailTxt}>
-           <Text style={styles.header}>{item.name}</Text>
-           <Text>Quantity: {item.quantity}</Text>
-           <Text style={styles.price}>${item.price}</Text>
+         <View >
+            <Text style={styles.header}>{item.name}</Text>
+            <Text>Quantity: {item.quantity}</Text>
+            <Text style={styles.price}>${item.price}</Text>
          </View>
-         <TouchableOpacity onPress={() => onDelete()}>
+         <TouchableOpacity onPress={() => onDelete(item.id)}>
            <Ionicons name="trash-outline" size={24} color="black" />
          </TouchableOpacity>
       </View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 18,
+    paddingRight:10,
   },
   detail: {
     flex: 1,

@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createNativeStackNavigator();
 
-const ShopNavigator = ({navigation}) => {
+const ShopNavigator = () => {
   return (
      <Stack.Navigator initialRouteName="Categories" 
      screenOptions={{
@@ -46,10 +46,6 @@ const ShopNavigator = ({navigation}) => {
           title:"",
           headerTransparent:true,
           headerTintColor:"crimson",
-          headerRight: () => (
-            <TouchableOpacity onPress={() => console.log("agregado a Favorito")}>
-              <Text><Ionicons name="heart-outline" size={34} color="crimson" /> </Text>
-            </TouchableOpacity>)
           })
         }/>
      </Stack.Navigator>
