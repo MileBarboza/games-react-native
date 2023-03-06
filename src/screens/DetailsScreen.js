@@ -8,23 +8,23 @@ import colors from '../constants/colors'
 
 const DetailsScreen = ({route}) => {
     const dispatch = useDispatch()
-    const bread = useSelector(state => state.products.selected)
+    const product = useSelector(state => state.products.selected)
 
     useEffect(() => {
       console.log(route.params)
     }, [])
     
     const handleAddItem = () => {
-      dispatch(addItem(bread))
+      dispatch(addItem(product))
     }
 
   return (
      <View style={styles.container}>     
-         <Image source= {{uri: bread.img}} style={styles.image} />
+         <Image source= {{uri: product.img}} style={styles.image} />
        <View style={styles.containerDetail}>
-           <Text style={styles.title}>{bread.name}</Text>
-              <Text style={styles.descrip}>{bread.description}</Text>
-           <Text style={styles.price}>${bread.price}</Text>
+           <Text style={styles.title}>{product.name}</Text>
+              <Text style={styles.descrip}>{product.description}</Text>
+           <Text style={styles.price}>${product.price}</Text>
            <View style={styles.btn}>
             <BtnAdd txt="Add to cart" onPress={handleAddItem}/>
             <TouchableOpacity onPress={() => console.log("agregado a Favorito")}>

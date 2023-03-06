@@ -6,6 +6,7 @@ import DetailsScreen from '../screens/DetailsScreen';
 import colors from '../constants/colors';
 import { TouchableOpacity,Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import UserScreen from '../screens/UserScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,26 +18,23 @@ const ShopNavigator = () => {
        headerTitleAlign:"center",
        headerTitleStyle:{
          fontWeight: "bold",
-         fontFamily:"Saira",
          fontSize: 24 },
      }}>
         <Stack.Screen name="Categories" component={CategoriesScreen} 
-        options={{title:"Games",
-        headerRight: () => (
-        <TouchableOpacity onPress={() => console.log("Buscando...")}>
-            <Text><Ionicons name="ios-search" size={27} color="black" /> </Text>
-        </TouchableOpacity>
-        )
-        }}/>
+        options={({navigation}) => ({ 
+          title: 'Games',
+          headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate("UserTab")}>
+                <Ionicons name="ios-person-outline" size={27} color="black" /> 
+            </TouchableOpacity> 
+          )
+      })}
+        />
 
         <Stack.Screen name="Products" component={ProductsScreen} 
         options={
           ({route}) => ({ 
             title: route.params.title,
-          headerRight: () => (
-          <TouchableOpacity onPress={() => console.log("Buscando...")}>
-              <Text><Ionicons name="ios-search" size={27} color="black" /> </Text>
-          </TouchableOpacity>)
           })
         }/>
        
@@ -48,6 +46,13 @@ const ShopNavigator = () => {
           headerTintColor:"crimson",
           })
         }/>
+
+
+      <Stack.Screen name="UserTab" component={UserScreen} 
+         options={{
+          title: 'Profile'
+        }} 
+      />
      </Stack.Navigator>
   )
 }

@@ -1,13 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import OrdersScreen from "../screens/OrdersScreen"
-import { BtnBack } from "../components/Buttons";
+import SearchScreen from "../screens/SearchScreen"
 
 const Stack = createNativeStackNavigator()
 
-export default UserNavigator = ({navigation}) => {
+export default SearchNavigator = () => {
+
   return (
     <Stack.Navigator
-      initialRouteName="User" 
       screenOptions={{
         headerTitleAlign:"center",
         headerShadowVisible: false,
@@ -17,11 +16,8 @@ export default UserNavigator = ({navigation}) => {
       }}
     >
 
-      <Stack.Screen name="Orders" component={OrdersScreen}
-        options={{ title: "User",
-        headerLeft: () => (
-          <BtnBack onPress={() => navigation.goBack()} />
-          )
+      <Stack.Screen name="Search" component={SearchScreen}
+        options={{ title: "Search",
        }}/>
 
     </Stack.Navigator>

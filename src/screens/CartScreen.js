@@ -5,13 +5,14 @@ import { BtnCheckout, BtnEmpty } from "../components/Buttons"
 import { useSelector, useDispatch } from "react-redux"
 import { confirmCart, removeItem, clearCart } from "../store/actions/cart.action"
 
-const CartScreen = () => {
+const CartScreen = ({navigation}) => {
   const dispatch = useDispatch()
   const items = useSelector(state => state.cart.items)
   const total = useSelector(state => state.cart.total)
 
   const handleConfirmCart = () => {
     dispatch(confirmCart(items, total))
+    navigation.navigate("UserTab")  
   }
   const handleDeleteItem = id => {
     dispatch(removeItem(id))

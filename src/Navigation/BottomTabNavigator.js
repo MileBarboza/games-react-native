@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ShopNavigator from './ShopNavigator';
 import CartNavigator from './CartNavigator';
 import FavoriteNavigator from './FavoriteNavigator';
-import UserNavigator from './UserNavigator';
 import { Ionicons } from '@expo/vector-icons';
+import SearchNavigator from './SearchNavigator';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -25,11 +25,11 @@ export default BottomTabNavigator = () => {
             case 'CartTab':
                iconName = focused ? 'cart' : 'cart-outline';
                break
-            case 'UserTab':
-               iconName = focused ? 'person-sharp' : 'ios-person-outline';
-               break
             case 'FavTab':
                iconName = focused ? 'heart' : 'heart-outline';
+               break
+            case 'SearchTab':
+               iconName = focused ? 'search' : 'search-outline';
                break
          }
          return <Ionicons name = {iconName}  size= {24}  color={color} />
@@ -55,9 +55,9 @@ export default BottomTabNavigator = () => {
          tabBarLabelStyle: styles.txt,
          }}
      /> 
-     <BottomTab.Screen name="UserTab" component={UserNavigator} size= {30}
+      <BottomTab.Screen name="SearchTab" component={SearchNavigator} size= {30}
          options={{
-         tabBarLabel: 'User',
+         tabBarLabel: 'Search',
          tabBarLabelStyle: styles.txt,
          }}
      />

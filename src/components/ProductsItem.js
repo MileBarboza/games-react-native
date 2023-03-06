@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    fontFamily: "Saira",
     fontSize: 30,
     paddingHorizontal: 10,
   },

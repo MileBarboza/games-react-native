@@ -4,8 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import colors from "../constants/colors";
 
 const formatDay = (time) => {
-    const date = new Date(time)
-    return date.toLocaleDateString()
+  const date = new Date(time)
+  return date.toLocaleDateString()
 }
 
 const OrderItem = ({ item, onDelete }) => {
@@ -30,32 +30,32 @@ const OrderItem = ({ item, onDelete }) => {
 export default OrderItem
 
 const styles = StyleSheet.create({
-    order:{
-        flexDirection:"row",
-        justifyContent:"space-between",
-        justifyContent:"space-around",
-        alignItems:"center",
-        margin:10,
-        borderColor:"#ccc",
-        borderWidth:1,
-        borderRadius:6,
-    },
-    containerOrder:{
-        padding:15,
-    },
-    date:{
-        fontSize:18
-    },
-    id:{
-        paddingTop:5,
-        fontSize:17
-    },
-    total:{
-        padding:10,
-        fontSize:18,
-        fontWeight:"bold"
-    },
-    trash:{
-        padding:20,
-    }
+  order:{
+    flexDirection:"row",
+    justifyContent:"space-between",
+    justifyContent:"space-around",
+    alignItems:"center",
+    margin:10,
+    borderColor:"#ccc",
+    borderWidth:1,
+    borderRadius:6,
+  },
+  containerOrder:{
+    padding:15,
+  },
+  date:{
+    fontSize:18
+  },
+  id:{
+    paddingTop:5,
+    fontSize:17
+  },
+  total:{
+    padding:10,
+    fontSize:18,
+    fontWeight:"bold"
+  },
+  trash:{
+    padding:20,
+  }
 })

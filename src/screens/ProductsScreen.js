@@ -4,11 +4,10 @@ import ProductsItem from '../components/ProductsItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterProduct, selectedProduct } from '../store/actions/products.action'
 
-const ProductsScreen = ({navigation, route}) => {
+const ProductsScreen = ({navigation}) => {
   const dispatch = useDispatch()
   const categoryProducts = useSelector(state => state.products.filterProduct)
   const category = useSelector(state => state.categories.selected)
-
 
   useEffect(() => {
     dispatch(filterProduct(category.id))
