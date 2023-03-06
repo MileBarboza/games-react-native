@@ -5,13 +5,17 @@ import { useDispatch } from 'react-redux'
 import { Octicons } from '@expo/vector-icons';
 import ImageSelector from '../components/ImageSelector'
 import { addPlace } from '../store/actions/places.actions'
+import { useSelector } from 'react-redux'
 
 const UserScreen = () => {
   const dispatch = useDispatch()
   const [image, setImage] = useState()
+  
+  const places = useSelector(state => state.places.places) 
 
   const handleSave = () => { 
     dispatch( addPlace( image) )
+    places
   }
 
   return (
