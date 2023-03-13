@@ -12,6 +12,7 @@ const CartScreen = ({navigation}) => {
 
   const handleConfirmCart = () => {
     dispatch(confirmCart(items, total))
+    dispatch(clearCart(items))
     navigation.navigate("UserTab")  
   }
   const handleDeleteItem = id => {

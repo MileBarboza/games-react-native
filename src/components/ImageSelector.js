@@ -10,7 +10,7 @@ const ImageSelector = (props) => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
     if (status !== "granted") {
-        Alert.alert("Permisos Insuficientes", "Necesita el Permiso para acceder a la cámara", [{text: "Ok"}])
+        Alert.alert("Insufficient Permissions, You Need Permission to Access the Camera", [{text: "Ok"}])
         return false 
     }
     return true;
@@ -32,12 +32,15 @@ const ImageSelector = (props) => {
 
 
   return (
-    <View style={styles.login}>
-        { !pickedUri ? (<Image source={{ uri: 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'}} style={styles.perfil}/>) : (<Image source={{uri: pickedUri}} style={styles.perfil}/>) }
+    <View style={styles.container} >
+      <View style={styles.login}>
+          { !pickedUri ? (<Image source={{ uri: 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'}} style={styles.profile}/>) : (<Image source={{uri: pickedUri}} style={styles.profile}/>) }
+      </View> 
         <TouchableOpacity style={styles.camera}  onPress={handleTakeImage}>
-          <Ionicons name="md-camera" size={20} color="#7c7c7c" />
+          <Ionicons name="md-camera" size={25} color="#999" />
         </TouchableOpacity>
-    </View> 
+    </View>
+
   );
 };
 
@@ -50,15 +53,15 @@ const styles = StyleSheet.create({
     marginBottom:10,
     position: 'relative'
   },
-  perfil:{
-    height:130,
-    width:130,
+  profile:{
+    height:180,
+    width:180,
     borderRadius:100,
   },
   camera: {
     position: 'absolute',
-    bottom:15,
-    right: 160,
+    bottom:25,
+    right:45,
     backgroundColor:'#d2d0d0',
     borderRadius:100,
     padding:2

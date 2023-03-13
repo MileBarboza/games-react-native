@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import MainNavigation from "./src/Navigation/index"
 import { Provider } from "react-redux";
 import store from "./src/store";
+import { init } from "./db";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -12,6 +13,13 @@ export default function App() {
   if (!loaded) {
     return null;
   }
+
+  init()
+  .then(() => console.log("-----DataBase initialized"))   
+  .catch((err) => {      
+    console.log("Database failed")  
+    console.log(err.message)
+  })
 
   return (
     <Provider store={store}>  

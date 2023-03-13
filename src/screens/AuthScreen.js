@@ -4,12 +4,12 @@ import colors from "../constants/colors"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
 import Input from "../components/Input"
-import { signUp } from "../store/actions/auth.action"
+import { signIn, signUp } from "../store/actions/auth.action"
   
   const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE"
   
   const formReducer = (state, action) => {
-    console.log(action)
+    // console.log(action)
     if (action.type === FORM_INPUT_UPDATE) {
       const updatedValues = {
         ...state.inputValues,
@@ -35,10 +35,14 @@ import { signUp } from "../store/actions/auth.action"
   const AuthScreen = () => {
     const dispatch = useDispatch()
     const [error, setError] = useState(null)
+    const [isLogin, setIsLogin] = useState(true);
+
+    const loginAction = isLogin ? 'Sign in' : 'Sign up';
+    const loginChange = isLogin ? 'Sign up' : 'Sign in';
   
     useEffect(() => {
       if (error) {
-        Alert.alert("A ocurrido un error", error, [{ text: "Ok" }])
+        Alert.alert("An error has occurred", error, [{ text: "Ok" }])
       }
     }, [setError])
   
@@ -53,22 +57,34 @@ import { signUp } from "../store/actions/auth.action"
       },
       formIsValid: false,
     })
-  
-    const handleSignUp = () => {
-      if (formState.formIsValid) {
-        dispatch(
-          signUp(formState.inputValues.email, formState.inputValues.password)
-        )
+
+    const onHandlerAuth = () => {
+      if(isLogin){
+        if (formState.formIsValid) {
+          dispatch(signIn(formState.inputValues.email, formState.inputValues.password))
+        } else {
+          Alert.alert("Invalid Form", "Email and Password is required", [
+            { text: "ok" },
+          ])
+        }
       } else {
-        Alert.alert("formulario inválido", "Ingrese un Email y Password válido", [
-          { text: "ok" },
-        ])
-      }
+        if (formState.formIsValid) {
+          dispatch(signUp(formState.inputValues.email, formState.inputValues.password))
+        } else {
+          Alert.alert("Invalid Form", "Email and Password is required", [
+            { text: "ok" },
+          ])
+        }
+      }  
+    }
+    
+    const handleChangeAuth = () => {
+      setIsLogin(!isLogin);
     }
   
     const onInputChangeHandler = useCallback(
       (inputIdentifier, inputValue, inputValidity) => {
-        console.log(inputIdentifier, inputValue, inputValidity)
+        // console.log(inputIdentifier, inputValue, inputValidity)
         dispatchFormState({
           type: FORM_INPUT_UPDATE,
           value: inputValue,
@@ -95,7 +111,7 @@ import { signUp } from "../store/actions/auth.action"
               required
               email
               autoCapitalize="none"
-              errorText="Por favor ingrese un email válida"
+              errorText="enter a valid Email"
               onInputChange={onInputChangeHandler}
               initialValue=""
             />
@@ -107,15 +123,18 @@ import { signUp } from "../store/actions/auth.action"
               password
               secureTextEntry
               autoCapitalize="none"
-              errorText="Por favor ingrese una contraseña válida"
+              errorText="enter a valid Password, must have 6 characters or more"
               onInputChange={onInputChangeHandler}
               initialValue=""
             />
           </View>
           <View style={styles.footer}>
             <View style={styles.button}>
-              <TouchableOpacity onPress={handleSignUp} style={styles.btn}>
-                <Text style={styles.txtBtn}>Resgister</Text>
+              <TouchableOpacity onPress={onHandlerAuth} style={styles.buttonLogin}>
+                 <Text style={styles.txtBtn2}>{loginAction}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handleChangeAuth} style={styles.btn}>
+                 <Text style={styles.txtBtn}>{loginChange}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -140,6 +159,11 @@ import { signUp } from "../store/actions/auth.action"
       margin:15,
       marginBottom:30
     },
+    subtitle: {
+      fontSize: 17,
+      textAlign:"center",
+      marginBottom: 18,
+    },
     container: {
       flex: 1,
       width: "85%",
@@ -148,20 +172,28 @@ import { signUp } from "../store/actions/auth.action"
       padding: 32,
     },
     footer: {
-      marginTop: 42,
+      marginTop: 35,
     },
     button: {
       marginVertical:15,
       paddingHorizontal:35
     },
-    btn:{
+    buttonLogin:{
+      backgroundColor:colors.Tertiary,
       borderRadius:12,
+      marginBottom:10
     },
     txtBtn:{
       color: colors.Tertiary,
-      fontSize: 13,
+      fontSize: 14,
       textAlign:"center",
-      fontWeight:"bold",
+      fontWeight:'bold'
+    },
+    txtBtn2:{
+      color: "#fff",
+      fontSize: 22,
+      textAlign:"center",
+      fontWeight:'bold'
     },
   })
   
