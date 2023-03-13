@@ -31,7 +31,7 @@ export const loadGames = () => {
       try {
           const result = await fetchGames()    
           console.log("-------Tabla Recibida: ",result)
-          dispatch({type: LOAD_PROFILE, profile: result.rows._array, profileName: result.rows._array})  
+          dispatch({type: LOAD_PROFILE, profile: result.rows._array})   
       } catch (err) {
         console.log(err.message) 
         throw err 

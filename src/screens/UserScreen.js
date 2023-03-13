@@ -1,33 +1,34 @@
-import { Image, StyleSheet,Text, View } from 'react-native'
+import { StyleSheet, View, FlatList} from 'react-native'
 import React, { useEffect } from 'react'
 import OrdersScreen from './OrdersScreen'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadGames } from '../store/actions/profile.actions'
+import Profiletem from '../components/Profiletem'
 
 const UserScreen = () => {
   const dispatch = useDispatch()
+  const profile = useSelector(state => state.profile.profile)    
 
   useEffect(() => {
-    console.log(`"---RESULTADO: - ${profile} - ${profileName}`);
-  }, [profile,profileName]);
+    console.log("---RESULTADO: ",profile);
+  }, [profile]);
   
   useEffect(() => {
     dispatch(loadGames()) 
   }, [])
 
-  const profile = useSelector(state => state.profile.profile)    
-  const profileName = useSelector(state => state.profile.profileName)  
+  const renderItem = ({item}) =>(
+    <Profiletem title={item.title} image={item.image}/>
+  )
 
   return (
     <View style={styles.container}>
       <View style={styles.containerProfile}>
-           <View>
-            { profile 
-            ?  ( <View><Image style={styles.profile} source={{uri: profile}}/>
-                  <Text style={styles.name}> {profileName} </Text></View>) 
-            :  (<View><Image style={styles.profile}source={{uri: 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'}}/>
-                  <Text style={styles.name}> User </Text></View>)}
-           </View>
+        <FlatList style={styles.flat}
+          data={profile}
+          keyExtractor={item => item.id}
+          renderItem={ renderItem }
+        />
       </View>
       <OrdersScreen />
     </View>
@@ -41,19 +42,8 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent:"center",
   },
-  containerProfile:{
-    justifyContent:'center',
-    alignItems:'center',
-    marginTop:30
+  flat:{
+    margin:20,
+    height:210,
   },
-  profile:{
-    width:160,
-    height:160,
-    borderRadius:100,
-  },
-  name:{
-    marginTop:5,
-    fontSize:30,
-    textAlign:'center',
- }
 })

@@ -6,5 +6,5 @@ import BottomTabNavigator from './BottomTabNavigator'
 export default  () => {
 const userId = useSelector(state =>  state.auth.userId)
 
-  return <>{!userId ? <BottomTabNavigator/> : <AuthNavigator/>}</>
+  return <>{userId ? <BottomTabNavigator/> : <AuthNavigator/>}</>
 }

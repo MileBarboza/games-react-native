@@ -15,7 +15,7 @@ export default function App() {
   }
 
   init()
-  .then(() => console.log("-----DataBase initialized"))   
+  .then(() => console.log("---DataBase initialized"))   
   .catch((err) => {      
     console.log("Database failed")  
     console.log(err.message)
