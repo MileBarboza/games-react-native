@@ -1,9 +1,10 @@
 import React from "react"
 import { StyleSheet, Text, View, FlatList } from "react-native"
-import CartItem from "../components/CartItem"
-import { BtnCheckout, BtnEmpty } from "../components/Buttons"
 import { useSelector, useDispatch } from "react-redux"
 import { confirmCart, removeItem, clearCart } from "../store/actions/cart.action"
+import CartItem from "../components/CartItem"
+import { BtnCheckout, BtnEmpty } from "../components/Buttons"
+import colors from "../constants/colors"
 
 const CartScreen = ({navigation}) => {
   const dispatch = useDispatch()
@@ -28,20 +29,26 @@ const CartScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-
-      <View style={styles.list}>
-        <FlatList
-          data={items}
-          keyExtractor={item => item.id}
-          renderItem={renderCartItem}
-        />
-      </View>
-
-      <Text style={styles.total}>Total: <Text style={styles.price}>$ {total}</Text></Text>
-        <View style={styles.btnContainer}>
-          <BtnEmpty  txt="EMPTY CART" onPress={handleClearCart}/>
-          <BtnCheckout txt="CHECKOUT"  onPress={handleConfirmCart}/>
+     {items.length > 0  ?
+      <>
+        <View style={styles.list}>
+          <FlatList
+            data={items}
+            keyExtractor={item => item.id}
+            renderItem={renderCartItem}
+          />
         </View>
+        <View style={styles.containerTotal}>
+           <Text style={styles.total}>Total: </Text>
+           <Text style={styles.price}>$ {total}</Text>
+        </View>
+       <View style={styles.btnContainer}>
+         <BtnEmpty  txt="EMPTY CART" onPress={handleClearCart}/>
+         <BtnCheckout txt="CHECKOUT"  onPress={handleConfirmCart}/>
+       </View>
+      </>   :
+        <Text style={styles.vacio}>Your Cart is empty</Text>
+      }
     </View>
   )
 }
@@ -51,31 +58,39 @@ export default CartScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:colors.background
   },
   list: {
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
-  footer: {
-    padding: 12,
-    borderTopColor: "#ccc",
-    borderTopWidth: 1,
+  containerTotal:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    color:colors.white
   },
-  total: {
+  total: {    
     textAlign:"right",
     fontSize: 21,
     marginHorizontal: 30,
     paddingBottom: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    color:colors.primary,
   },
   price:{
-    fontWeight:"bold"
+    fontWeight:"bold",
+  color:colors.primary,
+    fontSize: 21,
+    marginHorizontal: 30,
+    paddingBottom: 5,
   },
-  text: {
-    fontSize: 18,
-    padding: 8,
+  vacio:{
+    flex: 1,
+    color:"#f5e3e5",
+    fontSize:16,
+    textAlign:"center",
+    marginTop:"70%"
   },
   btnContainer: {
     flexDirection: "row",

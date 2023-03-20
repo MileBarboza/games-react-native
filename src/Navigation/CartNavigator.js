@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CartScreen from '../screens/CartScreen';
 import { BtnBack } from '../components/Buttons';
+import CartScreen from '../screens/CartScreen';
+import colors from '../constants/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,8 +18,10 @@ export default CartNavigator = ({navigation}) => {
      }}>    
         <Stack.Screen name="Cart" component={CartScreen} options={{
           title:"My Cart",
+          headerTintColor: colors.primary,
+          headerStyle: {backgroundColor: colors.menu},
           headerLeft: () => (
-            <BtnBack onPress={() => navigation.goBack()} />
+            <BtnBack onPress={() => navigation.goBack()} color={colors.grey} />
           )
         }} />   
     </Stack.Navigator>

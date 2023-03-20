@@ -1,12 +1,14 @@
+import React from 'react'
 import {  StyleSheet, TouchableOpacity, Text, Image } from 'react-native'
+import colors from '../constants/colors'
 
 const ProductsItem = ({item, onSelected}) => {
 
   return (
     <TouchableOpacity onPress={() => onSelected(item)} style={styles.container}>
-        <Image source= {{uri: item.img}} style={styles.image}/>
-          <Text style={styles.titleProd}>{item.name}</Text>
-        <Text style={styles.price}>${item.price}</Text>
+       <Image source= {{uri: item.img}} style={styles.image}/>
+         <Text style={{...styles.txtColor, ...styles.titleProd}}>{item.name}</Text>
+       <Text style={{...styles.txtColor, ...styles.price}} >${item.price}</Text>
     </TouchableOpacity>
   )
 }
@@ -23,15 +25,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
   },
-  title: {
-    textAlign: "center",
-    fontSize: 30,
-    paddingHorizontal: 10,
+  txtColor:{
+    color:colors.primary
   },
   price: {
     fontSize: 20,
     textAlign: "left",
-    fontWeight: "bold",
+    fontFamily:'SairaBold',
     paddingLeft: 10,
   },
   image: {

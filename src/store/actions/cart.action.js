@@ -34,7 +34,6 @@ export const confirmCart = (payload, total) => {
         })
       })
       const result = await response.json()
-      console.log(result)
       dispatch({
         type: CONFIRM_CART,
         confirm: true,

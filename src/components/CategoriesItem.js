@@ -1,9 +1,9 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 const CategoriesItem = ({item, onSelected}) => {
   return (
-    <View style={{ ...styles.categoriesItem , ...{backgroundColor: item.color}}} >
+    <View style={styles.categoriesItem } >
      <TouchableOpacity onPress={() => onSelected(item)} style={styles.container}>
           <Image source= {{uri: item.img}} style={styles.img}/>
      </TouchableOpacity>
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     fontSize:25,
     bottom:15,
     paddingLeft:15,
-
   },
   imgContainer: {
     width: "40%",
@@ -39,6 +38,6 @@ const styles = StyleSheet.create({
   img: {
     width: "100%",
     height: "100%",
-   borderRadius:20
+    borderRadius:20
   },
 })

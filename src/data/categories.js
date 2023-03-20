@@ -6,22 +6,22 @@ export const CATEGORIES = [
   },
   {
     id: "2",
-    title: "Aventura",
+    title: "Adventure",
     img: "https://trome.com/resizer/6Nak7QKXOSWv_aY3dFhMRhWRhRQ=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/FSELMHFDABC4VF3ITMYLSJKELY.png",
   },
   {
+    id: "5",
+    title: "Action",
+    img: "https://i.blogs.es/04e225/mw-operator-pack-tout_zh4g/1366_2000.jpeg",
+  },
+  {
     id: "3",
-    title: "Deportes",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQmnabDABGqMvzPZc_3vuzHfF3iIsV45aryw&usqp=CAU",
+    title: "Sports",
+    img: "https://www.somosxbox.com/wp-content/uploads/2019/08/grid.jpg",
   },
   {
     id: "4",
     title: "Terror",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrpG6p4rANFC6j1R_MGEjpgqKNu5qj3Qn10w&usqp=CAU",
-  },
-  {
-    id: "5",
-    title: "Acción",
-    img: "https://cdn.ligadegamers.com/imagenes/juegos-de-accion-cke.jpg",
+    img: "https://i.blogs.es/a723a2/dead-space-lanzamiento/450_1000.webp",
   },
 ];

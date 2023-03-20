@@ -1,11 +1,12 @@
-import { StyleSheet } from 'react-native'
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import ShopNavigator from './ShopNavigator';
 import CartNavigator from './CartNavigator';
 import FavoriteNavigator from './FavoriteNavigator';
-import { Ionicons } from '@expo/vector-icons';
 import SearchNavigator from './SearchNavigator';
+import { Ionicons } from '@expo/vector-icons';
+import colors from '../constants/colors';
 
 const BottomTab = createBottomTabNavigator();
 
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
       height:55,
       paddingTop:5,
       paddingBottom: 5,
-      backgroundColor:"#222",
+      backgroundColor:colors.menu,
       borderTopColor: "transparent",
   },
   txt:{

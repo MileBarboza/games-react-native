@@ -1,8 +1,9 @@
-import { StyleSheet, FlatList } from 'react-native'
 import React, { useEffect } from 'react'
-import ProductsItem from '../components/ProductsItem'
+import { StyleSheet, FlatList, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterProduct, selectedProduct } from '../store/actions/products.action'
+import ProductsItem from '../components/ProductsItem'
+import colors from '../constants/colors'
 
 const ProductsScreen = ({navigation}) => {
   const dispatch = useDispatch()
@@ -26,12 +27,14 @@ const ProductsScreen = ({navigation}) => {
   )
 
   return (
-      <FlatList style={styles.container}
-        data={categoryProducts}
-        renderItem={renderProduct}
-        keyExtractor={item => item.id}
-        numColumns={2}
-      />
+   <View style={styles.container}>
+       <FlatList style={styles.containerProd}
+         data={categoryProducts}
+         renderItem={renderProduct}
+         keyExtractor={item => item.id}
+         numColumns={2}
+       />
+   </View>
   )
 }
 
@@ -39,7 +42,11 @@ export default ProductsScreen
 
 const styles = StyleSheet.create({
   container:{
-    marginBottom:50,
+    flex:1,
+    backgroundColor:colors.background
+  },
+  containerProd:{
+    marginBottom:55,
   }
 })
 

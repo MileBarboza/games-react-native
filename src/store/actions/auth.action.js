@@ -19,7 +19,6 @@ export const signUp = (email, password) => {
       })
 
       const data = await response.json()  
-      // console.log(data)
       
       dispatch({
           type: SIGNUP,
@@ -48,7 +47,6 @@ export const signIn = (email, password) => {
       })
 
       const data = await response.json()  
-      console.log("Aún no te Registraste",data)
       
       dispatch({
         type: SIGNIN,

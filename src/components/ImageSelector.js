@@ -37,10 +37,9 @@ const ImageSelector = (props) => {
           { !pickedUri ? (<Image source={{ uri: 'https://www.pngall.com/wp-content/uploads/5/Profile-PNG-File.png'}} style={styles.profile}/>) : (<Image source={{uri: pickedUri}} style={styles.profile}/>) }
       </View> 
         <TouchableOpacity style={styles.camera}  onPress={handleTakeImage}>
-          <Ionicons name="md-camera" size={25} color="#999" />
+          <Ionicons name="md-camera" size={25} color="#7f7f7f" />
         </TouchableOpacity>
     </View>
-
   );
 };
 
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     right:45,
     backgroundColor:'#d2d0d0',
     borderRadius:100,
-    padding:2
+    padding:2,
   },
 });
 

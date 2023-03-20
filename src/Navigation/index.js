@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import AuthNavigator from './AuthNavigator'
 import BottomTabNavigator from './BottomTabNavigator'

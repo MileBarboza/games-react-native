@@ -1,23 +1,24 @@
 import React from "react"
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
+import colors from "../constants/colors"
 
 const CartItem = ({ item, onDelete }) => {
   return (
-    <View style={styles.item}>
-      <View style={styles.imageContainer}>
-         <Image source= {{uri: item.img}} style={styles.image}/>
-      </View>
-      <View style={styles.detail}>
-         <View >
-            <Text style={styles.header}>{item.name}</Text>
-            <Text>Quantity: {item.quantity}</Text>
-            <Text style={styles.price}>${item.price}</Text>
-         </View>
-         <TouchableOpacity onPress={() => onDelete(item.id)}>
-           <Ionicons name="trash-outline" size={24} color="black" />
-         </TouchableOpacity>
-      </View>
+    <View style={styles.container}> 
+       <View  style={styles.imgContainer}>
+        <Image source= {{uri: item.img}} style={styles.image}  />
+       </View>
+       <View style={styles.detail}>
+           <Text style={styles.item}>{item.name}</Text>
+           <Text style={styles.quantity}>Quantity: {item.quantity}</Text>
+           <Text style={styles.price}>${item.price}</Text>
+       </View>
+       <View style={styles.delete}>
+         <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.iconDelete}>
+            <Ionicons name="trash-outline" size={24} color={colors.cart}/>
+          </TouchableOpacity>
+       </View>
     </View>
   )
 }
@@ -25,35 +26,54 @@ const CartItem = ({ item, onDelete }) => {
 export default CartItem
 
 const styles = StyleSheet.create({
-  item: {
-    flex: 1,
-    flexDirection:"row",
-    padding: 10,
+  container: {
+    height:125, 
+    borderRadius:10,
+    marginVertical:10,
+    flexDirection:'row',
+    alignItems:'center',
+    paddingBottom:5,
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    borderBottomColor: "#3b3b3b",
   },
-  header: {
-    fontSize: 18,
-    paddingRight:10,
-  },
-  detail: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  imageContainer:{
-   flex:1/2.5,
-   marginRight:30,
+  imgContainer:{
+    flex:1/1.7,
   },
   image:{
-    Width:40,
-    height: 100,
+    Width:30,
+    height:150,
+    height:170,
+    height:'100%',
     borderRadius:3
+  },
+  detail: {
+    height:100,
+    marginLeft:10, 
+    flex:1,
+    paddingLeft:10
+  },
+  item: {
+    fontWeight:'bold',
+    fontSize: 18,
+    color:colors.primary
   },
   price:{
     fontSize:20,
-    fontWeight:"bold"
-  }
+    fontSize:17,
+    fontWeight:"bold",
+    color:colors.primary
+  },
+  quantity:{
+    color:colors.primary,
+    paddingVertical:3,
+  },
+  delete:{
+    marginRight:20, 
+    alignItems:'center',
+    color:colors.cart,
+  },
+  iconDelete:{
+     paddingLeft:5, 
+     flexDirection:'row',
+  },
 })

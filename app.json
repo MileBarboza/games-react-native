@@ -2,14 +2,15 @@
   "expo": {
     "name": "games-react-native",
     "slug": "games-react-native",
+    "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icongame.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splashgame.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#333333"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -18,14 +19,19 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.react-native.games",
+      "builNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.react-native.games",
+      "versionCode": 1 ,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
+        "backgroundColor": "#333333"
+      }, 
+      "permissions": ["CAMERA", "WRITE_EXTERNAL_STORAGE"]
+    }, 
     "web": {
       "favicon": "./assets/favicon.png"
     }

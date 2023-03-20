@@ -1,9 +1,10 @@
 export default {
     primary: "#d2d0d0",
-    secondary: "#lightcoral",
     Tertiary: "#c76c76",
-    fourth: "#A44125",
-    checkout:"#d37a83",
-    empty:"#e1a1a6",
+    checkout:"#c9747c",
+    empty:"#eea9ae",
     cart:"#ca444f",
+    background:"#2d2d2d",
+    menu:"#222",
+    grey:"#7d7c79"
 }

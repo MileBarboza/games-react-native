@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image} from 'react-native'
 import React from 'react'
+import { StyleSheet, Text, View, Image} from 'react-native'
+import colors from '../constants/colors'
 
 const Profiletem = ({title, image}) => {
     return (
@@ -19,12 +20,14 @@ const styles = StyleSheet.create({
   },
   profile:{
     width:160,
-    height:160,
+    height:150,
     borderRadius:100,
   },
   name:{
     margin:5,
-    fontSize:30,
+    fontSize:32,
     textAlign:'center',
+    color:colors.primary,
+    fontFamily:'Saira'
   }
 })

@@ -16,7 +16,6 @@ export const addProfile = (title, image) => {
       })
 
       const result = await insertGames(title, Path );
-      console.log("---INSERTADO: ",result);
 
     } catch (err) {
       console.log(err.message) 
@@ -30,7 +29,6 @@ export const loadGames = () => {
   return async dispatch => {
       try {
           const result = await fetchGames()    
-          console.log("-------Tabla Recibida: ",result)
           dispatch({type: LOAD_PROFILE, profile: result.rows._array})   
       } catch (err) {
         console.log(err.message) 

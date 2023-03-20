@@ -1,15 +1,13 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native"
-import React, { useCallback, useReducer, useEffect } from "react"
-import colors from "../constants/colors"
+import React, { useCallback, useReducer, useEffect, useState } from "react"
+import { KeyboardAvoidingView, StyleSheet, Text, View, Alert, TouchableOpacity, ImageBackground } from "react-native"
 import { useDispatch } from "react-redux"
-import { useState } from "react"
-import Input from "../components/Input"
 import { signIn, signUp } from "../store/actions/auth.action"
-  
+import Input from "../components/Input"
+import colors from "../constants/colors"
+
   const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE"
   
   const formReducer = (state, action) => {
-    // console.log(action)
     if (action.type === FORM_INPUT_UPDATE) {
       const updatedValues = {
         ...state.inputValues,
@@ -34,12 +32,12 @@ import { signIn, signUp } from "../store/actions/auth.action"
   
   const AuthScreen = () => {
     const dispatch = useDispatch()
+    const background = require("../../assets/img/hogwartslegacy.jpg")
     const [error, setError] = useState(null)
     const [isLogin, setIsLogin] = useState(true);
-
     const loginAction = isLogin ? 'Sign in' : 'Sign up';
     const loginChange = isLogin ? 'Sign up' : 'Sign in';
-  
+
     useEffect(() => {
       if (error) {
         Alert.alert("An error has occurred", error, [{ text: "Ok" }])
@@ -84,7 +82,6 @@ import { signIn, signUp } from "../store/actions/auth.action"
   
     const onInputChangeHandler = useCallback(
       (inputIdentifier, inputValue, inputValidity) => {
-        // console.log(inputIdentifier, inputValue, inputValidity)
         dispatchFormState({
           type: FORM_INPUT_UPDATE,
           value: inputValue,
@@ -95,7 +92,8 @@ import { signIn, signUp } from "../store/actions/auth.action"
       [dispatchFormState]
     )
   
-    return (
+  return (
+    <ImageBackground source={background} resizeMode="cover" style={styles.image}>
       <KeyboardAvoidingView
         behavior='height'
         keyboardVerticalOffset={50}
@@ -140,8 +138,9 @@ import { signIn, signUp } from "../store/actions/auth.action"
           </View>
         </View>
       </KeyboardAvoidingView>
-    )
-  }
+    </ImageBackground>
+  )
+}
   
   export default AuthScreen
   
@@ -152,12 +151,21 @@ import { signIn, signUp } from "../store/actions/auth.action"
       alignItems: "center",
       position:'relative',
     },
+    image: {
+      flex: 1,
+      justifyContent: 'center',
+      width:'100%',
+      height:'100%',
+    },
     title: {
-      fontSize: 24,
-      fontWeight:"bold",
+      fontSize: 40,
       textAlign:"center",
-      margin:15,
-      marginBottom:30
+      color:colors.primary,
+      fontFamily:'SairaBold',
+      marginBottom:5,
+      textShadowColor: "#00000076",
+      textShadowOffset: { width: 2, height: 2 },
+      textShadowRadius: 4,
     },
     subtitle: {
       fontSize: 17,
@@ -165,11 +173,11 @@ import { signIn, signUp } from "../store/actions/auth.action"
       marginBottom: 18,
     },
     container: {
-      flex: 1,
+      backgroundColor:"#83828275",
       width: "85%",
-      maxWidth: 400,
-      maxHeight: 400,
-      padding: 32,
+      maxHeight: 430,
+      padding: 40,
+      borderRadius:12,
     },
     footer: {
       marginTop: 35,
@@ -179,21 +187,33 @@ import { signIn, signUp } from "../store/actions/auth.action"
       paddingHorizontal:35
     },
     buttonLogin:{
-      backgroundColor:colors.Tertiary,
+      backgroundColor:"#558988",
       borderRadius:12,
-      marginBottom:10
+      marginBottom:10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+      elevation: 4,
     },
     txtBtn:{
-      color: colors.Tertiary,
-      fontSize: 14,
+      color:"#5f9695",
+      fontSize: 15,
       textAlign:"center",
-      fontWeight:'bold'
+      fontFamily:'SairaBold',
+      textShadowColor: "#00000076",
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 4,
+      paddingTop:10,
     },
     txtBtn2:{
       color: "#fff",
-      fontSize: 22,
+      fontSize: 23,
       textAlign:"center",
-      fontWeight:'bold'
+      fontFamily:'SairaBold',
+      textShadowColor: "#00000076",
+      textShadowOffset: { width: 1, height: 1 },
+      textShadowRadius: 4,
     },
   })
   

@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from "react"
 import { StyleSheet, Text, TextInput, View } from "react-native"
+import colors from "../constants/colors"
 
 const INPUT_CHANGE = "INPUT_CHANGE"
 const INPUT_BLUR = "INPUT_BLUR"
@@ -63,6 +64,7 @@ const Input = (props) => {
         value={inputState.value}
         onChangeText={textChangeHandler}
         onBlur={onBlurHandler}
+        placeholderTextColor={colors.cart}
         {...props}
       />
       {!inputState.isValid && inputState.touched && (
@@ -87,6 +89,8 @@ const styles = StyleSheet.create({
     padding:2,
     borderBottomColor: "#ccc",
     borderBottomWidth: 1,
+    color:"#fff",
+    fontSize:18,
   },
   errorContainer: {
     marginTop: 6,

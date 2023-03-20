@@ -1,39 +1,49 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React, { useEffect } from 'react'
-import { BtnAdd } from '../components/Buttons'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem } from '../store/actions/cart.action'
-import { Ionicons } from '@expo/vector-icons';
+import { addFav, deleteFav } from '../store/actions/favorite.action'
+import { BtnAdd } from '../components/Buttons'
 import colors from '../constants/colors'
 
 const DetailsScreen = ({route}) => {
-    const dispatch = useDispatch()
-    const product = useSelector(state => state.products.selected)
+  const dispatch = useDispatch()
+  const product = useSelector(state => state.products.selected)
+  const [favorite, SetFavorite] = useState(false);
 
-    useEffect(() => {
-      console.log(route.params)
-    }, [])
+ useEffect(() => {
+ }, [])
     
-    const handleAddItem = () => {
-      dispatch(addItem(product))
-    }
+ const handleAddItem = () => {
+   dispatch(addItem(product))
+ }
 
-  return (
-     <View style={styles.container}>     
-         <Image source= {{uri: product.img}} style={styles.image} />
-       <View style={styles.containerDetail}>
-           <Text style={styles.title}>{product.name}</Text>
-              <Text style={styles.descrip}>{product.description}</Text>
-           <Text style={styles.price}>${product.price}</Text>
-           <View style={styles.btn}>
-            <BtnAdd txt="Add to cart" onPress={handleAddItem}/>
-            <TouchableOpacity onPress={() => console.log("agregado a Favorito")}>
-              <Text><Ionicons name="heart-outline" size={34} color="crimson" /> </Text>
-            </TouchableOpacity>
-           </View>
+ const handleFavItem = () => {
+   if (favorite) {
+     dispatch(deleteFav(product))
+   } else {
+     dispatch(addFav(product))
+   }
+   SetFavorite(!favorite)
+ }
+
+ return (
+  <View style={styles.container}>     
+      <Image source= {{uri: product.img}} style={styles.image} />
+    <View style={styles.containerDetail}>
+        <Text style={styles.title} numberOfLines={1} adjustsFontSizeToFit={true}>{product.name}</Text>
+        <Text style={styles.descrip}>{product.description}</Text>
+       <Text style={styles.price}>${product.price}</Text>
+       <View style={styles.btn}>
+        <BtnAdd txt="ADD TO CART" onPress={handleAddItem}/>
+        <TouchableOpacity onPress={handleFavItem}>
+           <Ionicons name={favorite ?  "ios-heart" : "heart-outline"} size={34} color="crimson" /> 
+        </TouchableOpacity>
        </View>
-     </View>
-  )
+    </View>
+  </View>
+ )
 }
 
 export default DetailsScreen
@@ -60,33 +70,33 @@ const styles = StyleSheet.create({
   title:{
     color:colors.primary,
     fontSize:30,
-    fontWeight:"bold",
-    paddingTop: 20,
-    paddingBottom:8,
+    paddingTop: 15,
+    paddingBottom:'2%',
     paddingLeft:14,
-    paddingHorizontal:10
+    fontFamily:'Saira',
   },
   descrip:{
     color:colors.primary,
     fontSize:16,
     textAlign:"center",
     marginHorizontal:20,
-    paddingBottom:8,
   },
   price:{
     color:colors.primary,
     textAlign:"center",
     fontSize:30,
-    fontWeight:"bold",
+    fontFamily:'SairaBold',
+    position:'absolute',
+    bottom:'32%',
+    left:'36%',
   },
   btn: {
     position:"absolute",
-    bottom:10,
     bottom:60,
     marginHorizontal:90,
     alignItems:"center",
     flexDirection:'row',
     justifyContent:'center'
-  }
+  },
 })
 

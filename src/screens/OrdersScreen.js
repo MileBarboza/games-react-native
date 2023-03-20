@@ -1,9 +1,10 @@
 
-import { FlatList, View, StyleSheet ,Text} from 'react-native'
 import React, { useEffect } from 'react'
-import OrderItem from "../components/OrderItem";
+import { FlatList, View, StyleSheet ,Text} from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteOrder, getOrders } from '../store/actions/order.action';
+import OrderItem from "../components/OrderItem";
+import colors from '../constants/colors';
 
 const OrdersScreen = () => {
     const dispatch = useDispatch()
@@ -38,12 +39,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginBottom: 60,
+    marginBottom: 108,
     paddingHorizontal:5,
+    backgroundColor:colors.background
   },
   title:{
     fontWeight:'bold',
     paddingTop:15,
     marginLeft:15,
-    fontSize:24
+    fontSize:24,
+    color:colors.primary
   }
 })
