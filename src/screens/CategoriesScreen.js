@@ -41,7 +41,7 @@ const CategoriesScreen = ({navigation}) => {
   )
   const renderPlatform = ({ item }) => (
     <View>
-      <Platforms item={item} onSelected={console.log("Platforms")} />
+      <Platforms item={item} onSelected={console.log(" ")} />
     </View>
   )
   return (

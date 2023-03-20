@@ -16,7 +16,7 @@ const SearchScreen = () => {
              placeholder="Search..."
              placeholderTextColor={colors.Tertiary}
              keyboardType="default"
-             onInputChange={console.log("search")}
+             onInputChange={console.log(" ")}
            />
         </View>
       </View>
